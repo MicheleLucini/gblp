@@ -276,28 +276,28 @@ body {
 /***************************/
 
 .hero {
-  padding: 0 60px;
+  padding: 0 120px;
 }
 
 .hero>h1 {
   text-align: center;
-  font-size: 70px;
+  font-size: 80px;
   font-weight: 500;
   letter-spacing: -3px;
-  margin: 70px auto 160px;
+  margin: 100px auto 200px;
 }
 
 .hero>.wrapper {
   width: 100%;
   aspect-ratio: 2/1;
   background-color: var(--primary-lighten-100);
-  margin-bottom: 160px;
+  margin-bottom: 200px;
 }
 
 /***************************/
 
 .catalog {
-  padding: 0 60px;
+  padding: 0 120px;
 }
 
 .catalog>p {
@@ -306,7 +306,7 @@ body {
   line-height: 36px;
   font-weight: 500;
   letter-spacing: 0px;
-  max-width: 730px;
+  max-width: 700px;
   margin: 0 auto 160px;
   color: var(--primary-lighten-300);
 }
