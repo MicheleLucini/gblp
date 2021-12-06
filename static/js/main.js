@@ -1,14 +1,13 @@
 var $btnMenu;
+var $catalog;
 var isMenuOpen = false;
 
 (function () {
   $btnMenu = document.getElementById("btnMenu");
   $btnMenu.addEventListener('click', toggleMenu);
-  // clockInitialize();
 
-  // $content = document.getElementById("content");
-  // setContentMinHeight();
-  // window.addEventListener("resize", handleResize);
+  $catalog = document.getElementById("catalog");
+  document.addEventListener('scroll', onDocumentScoll, false);
 })();
 
 function toggleMenu() {
@@ -17,38 +16,53 @@ function toggleMenu() {
   isMenuOpen = !isMenuOpen;
 }
 
+/* SCROLL */
 
-// function face() {
-//   $hours = document.getElementById("hours");
-//   $minutes = document.getElementById("minutes");
-//   $seconds = document.getElementById("seconds");
+let lastKnownScrollPosition = 0;
+let ticking = false;
 
-//   clockUpdate();
+function onDocumentScoll(e) {
+  lastKnownScrollPosition = window.scrollY;
 
-//   setTimeout(clockUpdate, 100);
-// }
+  if (!ticking) {
+    window.requestAnimationFrame(function () {
+      // doSomething(lastKnownScrollPosition);
+      onCatalogVisibilityChange();
+      ticking = false;
+    });
 
-// function clockUpdate() {
-//   let today = new Date();
-//   let s = today.getSeconds(); // 0 - 59
-//   let m = today.getMinutes(); // 0 - 59
-//   let h = (today.getHours() % 12) + m / 59; // 22 % 12 = 10pm
+    ticking = true;
+  }
+}
 
-//   s *= 6; // 60 * 6 = 360deg
-//   m *= 6;
-//   h *= 30; // 12 * 30 = 360deg
+function isElementInViewport(el) {
+  var rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
 
-//   $seconds.style.transform = `rotate(${s}deg)`;
-//   $minutes.style.transform = `rotate(${m}deg)`;
-//   $hours.style.transform = `rotate(${h}deg)`;
+function onVisibilityChange(el, callback) {
+  var old_visible;
+  return function () {
+    var visible = isElementInViewport(el);
+    if (visible != old_visible) {
+      old_visible = visible;
+      if (typeof callback == 'function') {
+        callback(visible);
+      }
+    }
+  }
+}
 
-//   setTimeout(clockUpdate, 500);
-// }
+/* Catalog */
 
-// function setContentMinHeight() {
-//   $content.style.minHeight = window.innerHeight - 100 + "px";
-// }
+var onCatalogVisibilityChange = onVisibilityChange($catalog, function (visible) {
+  if (visible) {
+    $catalog.classList.add("appear");
+  }
+});
 
-// function handleResize() {
-//   setContentMinHeight();
-// }
