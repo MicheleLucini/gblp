@@ -1,13 +1,13 @@
 var $btnMenu;
-var $catalog;
+var $motto;
 var isMenuOpen = false;
 
 (function () {
   $btnMenu = document.getElementById("btnMenu");
-  $btnMenu.addEventListener('click', toggleMenu);
+  $btnMenu.addEventListener("click", toggleMenu);
 
-  $catalog = document.getElementById("catalog");
-  document.addEventListener('scroll', onDocumentScoll, false);
+  $motto = document.getElementById("motto");
+  document.addEventListener("scroll", onDocumentScoll, false);
 })();
 
 function toggleMenu() {
@@ -27,7 +27,7 @@ function onDocumentScoll(e) {
   if (!ticking) {
     window.requestAnimationFrame(function () {
       // doSomething(lastKnownScrollPosition);
-      onCatalogVisibilityChange();
+      onMottoVisibilityChange();
       ticking = false;
     });
 
@@ -40,7 +40,8 @@ function isElementInViewport(el) {
   return (
     rect.top >= 0 &&
     rect.left >= 0 &&
-    rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
     rect.right <= (window.innerWidth || document.documentElement.clientWidth)
   );
 }
@@ -51,18 +52,17 @@ function onVisibilityChange(el, callback) {
     var visible = isElementInViewport(el);
     if (visible != old_visible) {
       old_visible = visible;
-      if (typeof callback == 'function') {
+      if (typeof callback == "function") {
         callback(visible);
       }
     }
-  }
+  };
 }
 
-/* Catalog */
+/* Motto */
 
-var onCatalogVisibilityChange = onVisibilityChange($catalog, function (visible) {
+var onMottoVisibilityChange = onVisibilityChange($motto, function (visible) {
   if (visible) {
-    $catalog.classList.add("appear");
+    $motto.classList.add("appear");
   }
 });
-

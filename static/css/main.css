@@ -6,9 +6,9 @@
   --primary-lighten-400: #4f9dda;
   --primary-lighten-300: #6baedf;
   --primary-lighten-200: #bbdbf1;
-  --primary-lighten-100: #E3F1F9;
+  --primary-lighten-100: #e3f1f9;
   --accent: #e95e2a;
-  --accent-lighten: #FBDFD4;
+  --accent-lighten: #fbdfd4;
 }
 
 *,
@@ -99,7 +99,7 @@ body {
   animation-fill-mode: forwards;
 }
 
-#facade>div {
+#facade > div {
   width: 100%;
   height: 50%;
   background-color: var(--primary-lighten-100);
@@ -131,7 +131,7 @@ body {
   overflow: hidden;
 }
 
-.menu-btn>.line {
+.menu-btn > .line {
   position: absolute;
   height: 2px;
   width: 28px;
@@ -140,27 +140,27 @@ body {
   transition: transform 1s ease;
 }
 
-.menu-btn>.line.uno {
+.menu-btn > .line.uno {
   transform: translateY(-4px);
 }
 
-.menu-btn>.line.due {
+.menu-btn > .line.due {
   transform: translateY(4px);
 }
 
-.menu-btn.open>.line.uno {
+.menu-btn.open > .line.uno {
   animation: lineunoopen 1s ease forwards;
 }
 
-.menu-btn.open>.line.due {
+.menu-btn.open > .line.due {
   animation: linedueopen 1s ease forwards;
 }
 
-.menu-btn.close>.line.uno {
+.menu-btn.close > .line.uno {
   animation: lineunoclose 1s ease forwards;
 }
 
-.menu-btn.close>.line.due {
+.menu-btn.close > .line.due {
   animation: linedueclose 1s ease forwards;
 }
 
@@ -246,11 +246,11 @@ body {
   grid-gap: 2rem;
 }
 
-.header>.logo {
+.header > .logo {
   height: 32px;
 }
 
-.header>button {
+.header > button {
   overflow: hidden;
   outline: 0 !important;
   border: none;
@@ -263,11 +263,15 @@ body {
   font-weight: 700;
   padding: 0 16px;
   color: var(--accent);
-  transition: background-color .4s, color .4s, transform 1s cubic-bezier(.19, 1, .22, 1), -webkit-transform 1s cubic-bezier(.19, 1, .22, 1), -moz-transform 1s cubic-bezier(.19, 1, .22, 1), -o-transform 1s cubic-bezier(.19, 1, .22, 1);
+  transition: background-color 0.4s, color 0.4s,
+    transform 1s cubic-bezier(0.19, 1, 0.22, 1),
+    -webkit-transform 1s cubic-bezier(0.19, 1, 0.22, 1),
+    -moz-transform 1s cubic-bezier(0.19, 1, 0.22, 1),
+    -o-transform 1s cubic-bezier(0.19, 1, 0.22, 1);
   background-color: transparent;
 }
 
-.header>button:hover {
+.header > button:hover {
   color: white;
   background-color: var(--accent);
   transform: scale(1.1);
@@ -279,7 +283,7 @@ body {
   padding: 0 120px;
 }
 
-.hero>h1 {
+.hero > h1 {
   text-align: center;
   font-size: 80px;
   font-weight: 500;
@@ -287,42 +291,44 @@ body {
   margin: 100px auto 200px;
 }
 
-.hero>.wrapper {
+.hero > .wrapper {
   width: 100%;
   aspect-ratio: 2/1;
   background-color: var(--primary-lighten-100);
   margin-bottom: 200px;
+  display: grid;
+  place-items: center;
 }
 
 /***************************/
 
-.catalog {
+.motto {
   padding: 0 120px;
   margin: 0 auto 160px;
 }
 
-.catalog>div {
+.motto > div {
   overflow: hidden;
 }
 
-.catalog>div>p {
+.motto > div > p {
   text-align: center;
-  font-size: 28px;
-  line-height: 36px;
+  font-size: 32px;
+  line-height: 48px;
   font-weight: 500;
   letter-spacing: 0px;
-  max-width: 700px;
+  /* max-width: 700px; */
   margin: 0 auto;
   color: var(--primary-lighten-300);
   transform: translateY(200%);
 }
 
-.catalog.appear>div>p {
-  animation: appear-from-bottom 1.5s cubic-bezier(.19, 1, .22, 1) forwards;
+.motto.appear > div > p {
+  animation: appear-from-bottom 1.5s cubic-bezier(0.19, 1, 0.22, 1) forwards;
   /* animation-delay: 0.5s; */
 }
 
-.catalog>div>p>span {
+.motto > div > p > span {
   color: var(--primary);
 }
 
@@ -334,6 +340,117 @@ body {
   100% {
     transform: translateY(0);
   }
+}
+
+/***************************/
+
+.catalog {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+  padding: 0 120px;
+  margin-bottom: 200px;
+}
+
+.catalog > a {
+  text-decoration: none;
+}
+
+.catalog > a > div {
+  padding: 40px;
+  height: 400px;
+  cursor: pointer;
+}
+
+.catalog > a > div,
+.catalog > a > div * {
+  will-change: transform;
+  -webkit-transition: -webkit-transform 0.4s;
+  transition: -webkit-transform 0.4s;
+  -o-transition: -o-transform 0.4s;
+  -moz-transition: transform 0.4s, -moz-transform 0.4s;
+  transition: transform 0.4s;
+  transition: transform 0.4s, -webkit-transform 0.4s, -moz-transform 0.4s,
+    -o-transform 0.4s;
+}
+
+.catalog > a:hover > div {
+  -webkit-transform: scale(0.965);
+  -moz-transform: scale(0.965);
+  -ms-transform: scale(0.965);
+  -o-transform: scale(0.965);
+  transform: scale(0.965);
+}
+
+.catalog > a:hover > div > * {
+  -webkit-transform: scale(1.02);
+  -moz-transform: scale(1.02);
+  -ms-transform: scale(1.02);
+  -o-transform: scale(1.02);
+  transform: scale(1.02);
+}
+
+.catalog > a > div > h2 {
+  font-size: 2rem;
+  font-weight: 500;
+  margin-bottom: 25px;
+  color: var(--primary);
+}
+
+.catalog > a > div > p {
+  font-size: 1.5rem;
+  font-weight: 300;
+  margin-bottom: 25px;
+  color: var(--primary);
+}
+
+.catalog .rilora,
+.catalog .docum {
+  grid-column: span 2;
+}
+
+.catalog .rilora > div {
+  background-color: #fbfaf8;
+}
+
+.catalog .ricper > div {
+  background-color: #e6f7ef;
+}
+
+.catalog .rendi > div {
+  background-color: #fbfbfb;
+}
+
+.catalog .docum > div {
+  background-color: #f1f0fe;
+}
+
+.catalog > a > div > button {
+  overflow: hidden;
+  outline: 0 !important;
+  border: 3px solid var(--accent-lighten);
+  cursor: pointer;
+  /* font-size: 0.9rem !important;
+  letter-spacing: 0.05rem; */
+  height: 52px;
+  line-height: 42px;
+  border-radius: 52px;
+  font-weight: 700;
+  padding: 0 16px;
+  color: var(--accent);
+  transition: background-color 0.4s, color 0.4s,
+    transform 1s cubic-bezier(0.19, 1, 0.22, 1),
+    -webkit-transform 1s cubic-bezier(0.19, 1, 0.22, 1),
+    -moz-transform 1s cubic-bezier(0.19, 1, 0.22, 1),
+    -o-transform 1s cubic-bezier(0.19, 1, 0.22, 1);
+  background-color: transparent;
+}
+
+.catalog > a > div > button:hover {
+  color: white;
+  background-color: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.1);
 }
 
 /***************************/
@@ -352,10 +469,10 @@ body {
   background-color: transparent;
 }
 
-a:focus .doppio-testo span,
-a:hover .doppio-testo span,
-button:focus .doppio-testo span,
-button:hover .doppio-testo span,
+a:focus > .doppio-testo span,
+a:hover > .doppio-testo span,
+button:focus > .doppio-testo span,
+button:hover > .doppio-testo span,
 .doppio-testo:focus span,
 .doppio-testo:hover span {
   -webkit-transform: translateY(-150%) skewY(7deg);
@@ -369,12 +486,16 @@ button:hover .doppio-testo span,
   position: relative;
   display: block;
   padding: 2px 0;
-  -webkit-transition: -webkit-transform .9s cubic-bezier(.19, 1, .22, 1);
-  transition: -webkit-transform .9s cubic-bezier(.19, 1, .22, 1);
-  -o-transition: -o-transform .9s cubic-bezier(.19, 1, .22, 1);
-  -moz-transition: transform .9s cubic-bezier(.19, 1, .22, 1), -moz-transform .9s cubic-bezier(.19, 1, .22, 1);
-  transition: transform .9s cubic-bezier(.19, 1, .22, 1);
-  transition: transform .9s cubic-bezier(.19, 1, .22, 1), -webkit-transform .9s cubic-bezier(.19, 1, .22, 1), -moz-transform .9s cubic-bezier(.19, 1, .22, 1), -o-transform .9s cubic-bezier(.19, 1, .22, 1);
+  -webkit-transition: -webkit-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: -webkit-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: -o-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+    -moz-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+    -webkit-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+    -moz-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+    -o-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
   -webkit-transform-origin: left center;
   -moz-transform-origin: left center;
   -ms-transform-origin: left center;
@@ -382,10 +503,10 @@ button:hover .doppio-testo span,
   transform-origin: left center;
 }
 
-a:focus .doppio-testo span:after,
-a:hover .doppio-testo span:after,
-button:focus .doppio-testo span:after,
-button:hover .doppio-testo span:after,
+a:focus > .doppio-testo span:after,
+a:hover > .doppio-testo span:after,
+button:focus > .doppio-testo span:after,
+button:hover > .doppio-testo span:after,
 .doppio-testo:focus span:after,
 .doppio-testo:hover span:after {
   -webkit-transform: skewY(-7deg);
@@ -410,14 +531,17 @@ button:hover .doppio-testo span:after,
   -ms-transform-origin: left center;
   -o-transform-origin: left center;
   transform-origin: left center;
-  -webkit-transition: -webkit-transform .9s cubic-bezier(.19, 1, .22, 1);
-  transition: -webkit-transform .9s cubic-bezier(.19, 1, .22, 1);
-  -o-transition: -o-transform .9s cubic-bezier(.19, 1, .22, 1);
-  -moz-transition: transform .9s cubic-bezier(.19, 1, .22, 1), -moz-transform .9s cubic-bezier(.19, 1, .22, 1);
-  transition: transform .9s cubic-bezier(.19, 1, .22, 1);
-  transition: transform .9s cubic-bezier(.19, 1, .22, 1), -webkit-transform .9s cubic-bezier(.19, 1, .22, 1), -moz-transform .9s cubic-bezier(.19, 1, .22, 1), -o-transform .9s cubic-bezier(.19, 1, .22, 1);
+  -webkit-transition: -webkit-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: -webkit-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  -o-transition: -o-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  -moz-transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+    -moz-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
+  transition: transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+    -webkit-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+    -moz-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1),
+    -o-transform 0.9s cubic-bezier(0.19, 1, 0.22, 1);
 }
-
 
 /* Marquee button effect */
 
@@ -481,12 +605,12 @@ button:hover .doppio-testo span:after,
 
 /* ::before, which will become the hover effect */
 .hover-grow::before {
-  content: '';
+  content: "";
   display: block;
   opacity: 0;
   position: absolute;
-  transition-duration: .15s;
-  transition-timing-function: cubic-bezier(0.4, 0.0, 0.2, 1);
+  transition-duration: 0.15s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   z-index: -1;
   bottom: 0;
   left: 0;
